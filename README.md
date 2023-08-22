@@ -1,24 +1,67 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
+| Column             | Type    | Options                   |
+| ------------------ | ------- | ------------------------- |
+| name               | string  | null: false               |
+| email              | string  | null: false, unique: true |
+| encrypted_password | string  | null: false               |
+| occupation         | string  | null: false               |
+| prefecture_id      | integer | null: false               |
+| birth_date         | date    | null: false               |
 
-Things you may want to cover:
+### Association
+- has_one :profile
+- has_many :tweets
+- has_many :bookings
+- has_many :diagnoses
 
-* Ruby version
 
-* System dependencies
+## profiles テーブル
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| introduction       | text   | null: false               |
+| user      | references | null: false, foreign_key: true |
 
-* Configuration
+### Association
+- belongs_to :user
+- has_many :tweets
+- has_many :bookings
+- has_many :diagnoses
 
-* Database creation
 
-* Database initialization
+## tweets テーブル
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| user           | references | null: false, foreign_key: true |
+| title          | string     | null: false                    |
+| comment        | text       | null: false                    |
 
-* How to run the test suite
+### Association
+- belongs_to :user
+- belongs_to :profile
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## bookings テーブル
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| user           | references | null: false, foreign_key: true |
+| profile        | references | null: false, foreign_key: true |
+| booking_date   | date       | null: false                    |
+| message        | text       | null: false                    |
 
-* ...
+### Association
+- belongs_to :user
+- belongs_to :profile
+
+
+## diagnoses テーブル
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| user           | references | null: false, foreign_key: true |
+| result         | text       | null: false                    |
+
+### Association
+- belongs_to :user
+- belongs_to :profile
