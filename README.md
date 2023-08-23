@@ -17,7 +17,7 @@
 - has_many :diagnoses
 
 
-## profiles テーブル
+## mypages テーブル
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ------------------------- |
 | nickname           | string | null: false               |
