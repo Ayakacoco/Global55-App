@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_22_074900) do
     t.string "name", null: false
     t.string "occupation", null: false
     t.integer "prefecture_id", null: false
-    t.date "birth_date", default: "1950-01-01", null: false
+    t.integer "age", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
