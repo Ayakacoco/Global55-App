@@ -8,7 +8,7 @@
 | encrypted_password | string  | null: false               |
 | occupation         | string  | null: false               |
 | prefecture_id      | integer | null: false               |
-| birth_date         | date    | null: false               |
+| age                | integer | null: false               |
 
 ### Association
 - has_one :profile
